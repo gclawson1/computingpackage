@@ -1,13 +1,40 @@
-When daily temp > 40 => “risk of heat stroke”, when daily precipitation < 40, >= 0 => “comfortable weather!”, when daily precipitation < 0 => “risk of hypothermia”
-
 #' temp_risks
 #'
-#' compute the number of days in Australia per each location over the span of the data set where there is risk of heat stroke at 3 PM, comfortable weather, and hypothermia based.
-#'@param str data frame with columns date, location, Temp3pm
+#' compute the number of days in Australia per each location over the span of the data set where there is risk of heat stroke, comfortable weather, and freezing at 3 PM.
+#'@param data data frame with columns Date, Location, Temp3pm
 #' @return returns a list containing,
 #' \describe{
 #'  \item{Location}{Location in Australia}
 #'  \item{heat_stroke_n}{Number of days for a particular location where there has been a risk of heat stroke}
 #'  \item{comfort_n}{Number of days for a particular location where the weather has been comfortable}
-#'  \item{hypo_n}{Number of days for a particular location where there has been a risk of hypothermia}
+#'  \item{freezing_n}{Number of days for a particular location where there has been a risk of freezing}
 #'  }
+
+
+temp_risks = function(data){
+
+  rain_AUS_df <- data %>%
+    dplyr::mutate(year = lubridate::year(Date),
+                  month = lubridate::month(Date),
+                  day = lubridate::day(Date)) %>%
+    mutate(risk = case_when(
+      Temp3pm >40 ~ "heat stroke",
+      Temp3pm < 40 & Temp3pm >= 0 ~ "comfortable",
+      Temp3pm < 0 ~ "freezing"
+    ) )
+    risk_df <- rain_AUS_df %>%
+      group_by(Location) %>%
+    summarise(heat_stroke_n = sum(risk == "heat stroke", na.rm = TRUE),
+              comfortable_n = sum(risk == "comfortable", na.rm = TRUE),
+              freezing_n = sum(risk == "freezing", na.rm = TRUE))
+
+  return(
+    list(Location = risk_df$Location,
+         heat_stroke_n = risk_df$heat_stroke_n,
+         comfortable_n = risk_df$comfortable_n,
+         freezing_n = risk_df$freezing_n)
+  )
+
+
+
+}
