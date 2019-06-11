@@ -1,11 +1,40 @@
-when yearly precipitation > 465 => water supply good, when yearly precipitation < 465, > 300 => water supply okay, when yearly precipitation <=300  => water supply bad
-
 #' water_supply
 #'
-#' A list that outputs for each year, whether the water supply is good, okay, or bad.
-#'@param str data frame with columns Date, Rainfall
+#' A list that outputs for each year, for a specified location, whether the water supply is good, okay, or bad.
+#' @param rain_data data frame with columns Date, Rainfall
+#' @param location specified location in the data frame you want to see, default is Brisbane
 #' @return returns a list containing,
 #' \describe{
 #'  \item{Year}{Each year within the dataset}
-#'  \item{water_supply_level}{Whether or not the water supply is good, okay, or bad}
+#'  \item{Location}{Location specified}
+#'  \item{annual_rainfall}{Sum of the rainfall for a year}
+#'  \item{Water_supply_level}{Whether or not the water supply is good, okay, or bad}
 #'  }
+
+
+water_supply = function(rain_data, location = "Brisbane"){
+
+  rain_AUS_df <- rain_data %>%
+    dplyr::mutate(year = lubridate::year(Date),
+                  month = lubridate::month(Date),
+                  day = lubridate::day(Date)) %>%
+    filter(Location == location) %>%
+    group_by(year, Location) %>%
+    summarise(sum_rainfall = sum(Rainfall, na.rm = TRUE)) %>%
+    mutate(water_supply_level =
+             case_when(
+               sum_rainfall > 465 ~ "good",
+               sum_rainfall < 465 & sum_rainfall > 300 ~ "okay",
+               sum_rainfall < 300 ~ "poor"
+             ))
+
+   return(
+    list(Location = location,
+         Year = rain_AUS_df$year,
+         annual_rainfall = rain_AUS_df$sum_rainfall,
+         Water_supply_level = rain_AUS_df$water_supply_level)
+  )
+
+
+
+}
