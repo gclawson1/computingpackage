@@ -21,5 +21,5 @@ temperature_costs <- function(data){
     group_by(year) %>%
     summarise(total_hospital_bills = sum(hospital_bill, na.rm = TRUE))
 
-  return(DT::datatable(climate_data))
+  return(list(table = climate_data))
 }

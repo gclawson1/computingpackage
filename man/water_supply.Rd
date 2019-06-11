@@ -7,7 +7,7 @@
 water_supply(rain_data, location = "Brisbane", plot_out = FALSE)
 }
 \arguments{
-\item{rain_data}{data frame with columns Date, Rainfall}
+\item{rain_data}{data frame with columns Date, Location, Rainfall}
 
 \item{location}{specified location in the data frame you want to see, default is Brisbane}
 

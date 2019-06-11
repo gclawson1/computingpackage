@@ -30,9 +30,7 @@ temp_risks = function(data){
               comfortable_n = sum(risk == "comfortable", na.rm = TRUE),
               freezing_n = sum(risk == "freezing", na.rm = TRUE))
 
-  return(
-
-    DT::datatable(risk_df)
+  return(list(table = risk_df)
   )
 
 

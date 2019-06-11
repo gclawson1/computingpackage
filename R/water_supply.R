@@ -1,7 +1,7 @@
 #' water_supply
 #'
 #' A list that outputs for each year, for a specified location, whether the water supply is good, okay, or bad.
-#' @param rain_data data frame with columns Date, Rainfall
+#' @param rain_data data frame with columns Date, Location, Rainfall
 #' @param location specified location in the data frame you want to see, default is Brisbane
 #' @param plot_out specify if you want a plot proudced, default is FALSE
 #' @author Gage Clawson
