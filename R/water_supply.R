@@ -14,7 +14,7 @@
 
 water_supply = function(rain_data, location = "Brisbane"){
 
-  rain_AUS_df <- rain_data %>%
+  rain_df <- rain_data %>%
     dplyr::mutate(year = lubridate::year(Date),
                   month = lubridate::month(Date),
                   day = lubridate::day(Date)) %>%
@@ -30,9 +30,9 @@ water_supply = function(rain_data, location = "Brisbane"){
 
    return(
     list(Location = location,
-         Year = rain_AUS_df$year,
-         annual_rainfall = rain_AUS_df$sum_rainfall,
-         Water_supply_level = rain_AUS_df$water_supply_level)
+         Year = rain_df$year,
+         annual_rainfall = rain_df$sum_rainfall,
+         Water_supply_level = rain_df$water_supply_level)
   )
 
 

@@ -13,7 +13,7 @@
 
 mean_rainfall = function(rain_data, location = "Brisbane"){
 
-  rain_AUS_df <- rain_data %>%
+  rain_df <- rain_data %>%
     dplyr::mutate(year = lubridate::year(Date),
                   month = lubridate::month(Date),
                   day = lubridate::day(Date)) %>%
@@ -23,8 +23,8 @@ mean_rainfall = function(rain_data, location = "Brisbane"){
 
   return(
     list(Location = location,
-         Year = rain_AUS_df$year,
-         Mean_rainfall = rain_AUS_df$mean_rainfall)
+         Year = rain_df$year,
+         Mean_rainfall = rain_df$mean_rainfall)
   )
 
 }

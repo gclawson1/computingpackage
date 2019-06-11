@@ -1,6 +1,6 @@
 #' temp_risks
 #'
-#' compute the number of days in Australia per each location over the span of the data set where there is risk of heat stroke, comfortable weather, and freezing at 3 PM.
+#' compute the number of days per each location over the span of the data set where there is risk of heat stroke, comfortable weather, and freezing at 3 PM.
 #'@param data data frame with columns Date, Location, Temp3pm
 #' @return returns a list containing,
 #' \describe{
@@ -13,7 +13,7 @@
 
 temp_risks = function(data){
 
-  rain_AUS_df <- data %>%
+  clim_df <- data %>%
     dplyr::mutate(year = lubridate::year(Date),
                   month = lubridate::month(Date),
                   day = lubridate::day(Date)) %>%
@@ -22,7 +22,7 @@ temp_risks = function(data){
       Temp3pm < 40 & Temp3pm >= 0 ~ "comfortable",
       Temp3pm < 0 ~ "freezing"
     ) )
-    risk_df <- rain_AUS_df %>%
+    risk_df <- clim_df %>%
       group_by(Location) %>%
     summarise(heat_stroke_n = sum(risk == "heat stroke", na.rm = TRUE),
               comfortable_n = sum(risk == "comfortable", na.rm = TRUE),
