@@ -4,7 +4,7 @@
 #' @param data data frame with columns Date, MaxTemp
 #' @author Gage Clawson
 #' @example temperature_costs(data)
-#' @return Returns a list containing,
+#' @return Returns a table containing,
 #' \describe{
 #'  \item{Year}{Each year within the dataset}
 #'  \item{hospital_bill}{Sum of potential hospital bills from heat stroke ($)}
@@ -21,6 +21,5 @@ temperature_costs <- function(data){
     group_by(year) %>%
     summarise(total_hospital_bills = sum(hospital_bill, na.rm = TRUE))
 
-  return(list(Year = climate_data$year,
-              sum_hospital_bills = climate_data$total_hospital_bills))
+  return(DT::datatable(climate_data))
 }

@@ -4,12 +4,14 @@
 \alias{water_supply}
 \title{water_supply}
 \usage{
-water_supply(rain_data, location = "Brisbane")
+water_supply(rain_data, location = "Brisbane", plot_out = FALSE)
 }
 \arguments{
 \item{rain_data}{data frame with columns Date, Rainfall}
 
 \item{location}{specified location in the data frame you want to see, default is Brisbane}
+
+\item{plot_out}{specify if you want a plot proudced, default is FALSE}
 }
 \value{
 Returns a list containing,
@@ -18,6 +20,7 @@ Returns a list containing,
  \item{Location}{Location specified}
  \item{annual_rainfall}{Sum of the rainfall for a year}
  \item{Water_supply_level}{Whether or not the water supply is good, okay, or bad}
+ \plot{Annual Rainfall Plot}{Shows a plot of annual rainfall in a specified location}
  }
 }
 \description{

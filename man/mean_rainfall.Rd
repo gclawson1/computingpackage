@@ -4,7 +4,7 @@
 \alias{mean_rainfall}
 \title{mean_rainfall}
 \usage{
-mean_rainfall(rain_data, location = "Brisbane")
+mean_rainfall(rain_data, location = "Brisbane", plot_out = FALSE)
 }
 \arguments{
 \item{rain_data}{data frame with columns Date, Location, and Rainfall}
@@ -16,11 +16,12 @@ Returns a list containing,
 \describe{
  \item{Year}{Each year within the dataset}
  \item{Location}{Location specified}
- \item{Mean_rainfall}{The mean rainfall (mm) for each year in the dataset}
+ \item{Mean_rainfall}{The mean daily rainfall (mm) for each year in the dataset}
+ \plot{Plot of mean rainfall}{Shows a plot of mean daily rainfall in a specified location}
  }
 }
 \description{
-Compute mean precipitation for all years in the dataset and a specified location and output that year, location, and precipitation level.
+Compute mean daily precipitation for all years in the dataset and a specified location and output that year, location, and precipitation level.
 }
 \author{
 Gage Clawson

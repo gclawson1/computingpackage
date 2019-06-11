@@ -10,7 +10,7 @@ temp_risks(data)
 \item{data}{data frame with columns Date, Location, Temp3pm}
 }
 \value{
-Returns a list containing,
+Returns a table containing,
 \describe{
  \item{Location}{Location in Australia}
  \item{heat_stroke_n}{Number of days for a particular location where there has been a risk of heat stroke}

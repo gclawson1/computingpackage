@@ -1,0 +1,51 @@
+---
+title: "using_gages_package"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{using_gages_package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup}
+knitr::opts_chunk$set(
+  collapse = TRUE
+  #comment = "#>"
+)
+library(tidyverse)
+library(computingpackage)
+
+```
+
+Lets read in data and then calculate some summary statistics
+
+```{r example}
+
+#get data 
+data(rain_AUS)
+
+#function: max_rainfall. 
+#This calculates maximum precipitation each year for a specified location during a specified month and output that year, location, month, and precipitation level.
+test_max_rain <- max_rainfall(rain_AUS)
+test_max_rain
+
+#function: mean_rainfall
+#Compute mean precipitation for all years in the dataset and a specified location and output that year, location, and precipitation level.
+test_mean_rain <- mean_rainfall(rain_AUS, location = "Albury", plot_out = TRUE)
+test_mean_rain
+
+#function: water_supply
+# Produces a list that outputs for each year, for a specified location, whether the water supply is good, okay, or bad.
+test_water_supply <- water_supply(rain_AUS, location = "Woomera", plot_out = TRUE)
+test_water_supply
+
+#function: temp_risks
+#Compute the number of days per each location over the span of the data set where there is risk of heat stroke, comfortable weather, and freezing at 3 PM.
+test_temp_risks <- temp_risks(rain_AUS)
+test_temp_risks
+
+#function:temperature_costs
+#Compute the potential yearly hospital bill costs for people who might have a heat stroke because of the maximum temperature for that day over the span of the data set.
+test_temp_costs <- temperature_costs(rain_AUS)
+test_temp_costs
+```

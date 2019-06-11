@@ -4,7 +4,7 @@
 #' @param data data frame with columns Date, Location, Temp3pm
 #' @author Gage Clawson
 #' @example temp_risks(data)
-#' @return Returns a list containing,
+#' @return Returns a table containing,
 #' \describe{
 #'  \item{Location}{Location in Australia}
 #'  \item{heat_stroke_n}{Number of days for a particular location where there has been a risk of heat stroke}
@@ -31,10 +31,8 @@ temp_risks = function(data){
               freezing_n = sum(risk == "freezing", na.rm = TRUE))
 
   return(
-    list(Location = risk_df$Location,
-         heat_stroke_n = risk_df$heat_stroke_n,
-         comfortable_n = risk_df$comfortable_n,
-         freezing_n = risk_df$freezing_n)
+
+    DT::datatable(risk_df)
   )
 
 

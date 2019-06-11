@@ -10,7 +10,7 @@ temperature_costs(data)
 \item{data}{data frame with columns Date, MaxTemp}
 }
 \value{
-Returns a list containing,
+Returns a table containing,
 \describe{
  \item{Year}{Each year within the dataset}
  \item{hospital_bill}{Sum of potential hospital bills from heat stroke ($)}
