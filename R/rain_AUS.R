@@ -5,7 +5,7 @@
 #'
 #' @format A data frame with 142193 rows and 24 columns
 #' \itemize{
-#' \item date year/month/dat
+#' \item date year/month/day
 #' \item location The common name of the location of the weather station
 #' \item MinTemp The minimum temperature in degrees celsius
 #' \item MaxTemp The maximum temperature in degrees celsius
