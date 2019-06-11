@@ -1,11 +1,13 @@
 #' max_rainfall
 #'
-#' compute maximum precipitation each year for a specified location during a specified month and output that year, location, month, and precipitation level.
+#' Compute maximum precipitation each year for a specified location during a specified month and output that year, location, month, and precipitation level.
 #' @param rain_data data frame with columns Date, Location, Rainfall
 #' @param location specified location in the data frame you want to see, default is Brisbane
 #' @param years specified years in the data frame you want to see, default is 2009 to 2017
 #' @param month_spec specified month in the data frame you want to see, default is 4 (april)
-#' @return returns a list containing,
+#' @author Gage Clawson
+#' @example max_rainfall(rain_data, location = "Woomera", years = 2009:2017, month_spec = 5)
+#' @return Returns a list containing,
 #' \describe{
 #'  \item{Location}{Location specified}
 #'  \item{Month}{Month specified}

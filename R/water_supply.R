@@ -3,7 +3,9 @@
 #' A list that outputs for each year, for a specified location, whether the water supply is good, okay, or bad.
 #' @param rain_data data frame with columns Date, Rainfall
 #' @param location specified location in the data frame you want to see, default is Brisbane
-#' @return returns a list containing,
+#' @author Gage Clawson
+#' @example water_supply(rain_data, location = "Woomera)
+#' @return Returns a list containing,
 #' \describe{
 #'  \item{Year}{Each year within the dataset}
 #'  \item{Location}{Location specified}

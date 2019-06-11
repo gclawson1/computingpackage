@@ -1,8 +1,10 @@
 #' temp_risks
 #'
-#' compute the number of days per each location over the span of the data set where there is risk of heat stroke, comfortable weather, and freezing at 3 PM.
-#'@param data data frame with columns Date, Location, Temp3pm
-#' @return returns a list containing,
+#' Compute the number of days per each location over the span of the data set where there is risk of heat stroke, comfortable weather, and freezing at 3 PM.
+#' @param data data frame with columns Date, Location, Temp3pm
+#' @author Gage Clawson
+#' @example temp_risks(data)
+#' @return Returns a list containing,
 #' \describe{
 #'  \item{Location}{Location in Australia}
 #'  \item{heat_stroke_n}{Number of days for a particular location where there has been a risk of heat stroke}

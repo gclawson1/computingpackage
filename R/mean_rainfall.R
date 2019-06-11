@@ -1,13 +1,15 @@
 #' mean_rainfall
 #'
-#' compute mean precipitation for all years in the dataset and a specified location and output that year, location, and precipitation level.
+#' Compute mean precipitation for all years in the dataset and a specified location and output that year, location, and precipitation level.
 #' @param rain_data data frame with columns Date, Location, and Rainfall
 #' @param location specified location in the data frame you want to see, default is Brisbane
-#' @return returns a list containing,
+#' @author Gage Clawson
+#' @example mean_rainfall(rain_data, location = "Woomera")
+#' @return Returns a list containing,
 #' \describe{
 #'  \item{Year}{Each year within the dataset}
 #'  \item{Location}{Location specified}
-#'  \item{Mean_rainfall}{The mean rainfall for each year in the dataset}
+#'  \item{Mean_rainfall}{The mean rainfall (mm) for each year in the dataset}
 #'  }
 
 
