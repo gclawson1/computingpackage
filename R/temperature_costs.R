@@ -19,7 +19,8 @@ temperature_costs <- function(data){
     mutate(hospital_bill = case_when(MaxTemp >= 40 ~ MaxTemp*10,
                                      MaxTemp < 40 ~ 0)) %>%
     group_by(year) %>%
-    summarise(total_hospital_bills = sum(hospital_bill, na.rm = TRUE))
+    summarise(total_hospital_bills = sum(hospital_bill, na.rm = TRUE)) %>%
+    ungroup()
 
   return(list(table = climate_data))
 }

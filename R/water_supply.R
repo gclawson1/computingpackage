@@ -30,7 +30,8 @@ water_supply = function(rain_data, location = "Brisbane", plot_out = FALSE){
                annual_rainfall > 465 ~ "good",
                annual_rainfall < 465 & annual_rainfall > 300 ~ "okay",
                annual_rainfall < 300 ~ "poor"
-             ))
+             )) %>%
+    ungroup()
 
   if(plot_out){
     plot <- ggplot(rain_df, aes(x = as.factor(year), y = annual_rainfall)) + geom_col(aes(fill = water_supply_level)) + labs(title = sprintf("Annual Rainfall in %s", location), x = "Year", y = "Annual Rainfall") + theme_classic() +

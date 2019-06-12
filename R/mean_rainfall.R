@@ -22,7 +22,8 @@ mean_rainfall = function(rain_data, location = "Brisbane", plot_out = FALSE){
                   day = lubridate::day(Date)) %>%
     filter(Location == location) %>%
     group_by(year, Location) %>%
-    summarise(mean_rainfall = mean(Rainfall, na.rm = TRUE))
+    summarise(mean_rainfall = mean(Rainfall, na.rm = TRUE)) %>%
+    ungroup()
 
   if(plot_out){
     plot <- ggplot(rain_df, aes(x = as.factor(year), y = mean_rainfall)) + geom_col() + labs(title = sprintf("Mean Annual Rainfall in %s", location), x = "Year", y = "Mean Rainfall") + theme_classic() +

@@ -28,7 +28,8 @@ temp_risks = function(data){
       group_by(Location) %>%
     summarise(heat_stroke_n = sum(risk == "heat stroke", na.rm = TRUE),
               comfortable_n = sum(risk == "comfortable", na.rm = TRUE),
-              freezing_n = sum(risk == "freezing", na.rm = TRUE))
+              freezing_n = sum(risk == "freezing", na.rm = TRUE)) %>%
+      ungroup()
 
   return(list(table = risk_df)
   )
